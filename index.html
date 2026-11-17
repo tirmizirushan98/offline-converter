@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+  <title>Offline Converter</title>
+  <meta name="description" content="Convert PDF, Word, Excel, PowerPoint and image files on your own device. Nothing is uploaded.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fd9a64">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#3a1a16">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand"><img src="icon.svg" alt="" width="30" height="30"><span>Offline Converter</span></div>
+    <div id="mode" class="mode glass">Checking…</div>
+  </header>
+
+  <main>
+    <section class="stage" aria-label="Converter">
+      <div id="wheel-wrap" class="wheel-wrap">
+        <svg id="wheel" viewBox="-200 -200 400 400" role="group" aria-label="Formats"></svg>
+        <button id="hub" class="hub" type="button" aria-label="Browse files">
+          <span id="hub-icon" class="hub-icon" aria-hidden="true"></span>
+          <span id="hub-text" class="hub-text">Drop a file<br><small>or tap to browse</small></span>
+        </button>
+      </div>
+      <input id="file" type="file" multiple hidden>
+      <p id="hint" class="hint">Files never leave this device.</p>
+
+      <ul id="files" class="chips" aria-label="Your files"></ul>
+      <div id="actions" class="pills" aria-label="PDF tools"></div>
+    </section>
+
+    <section id="panel" class="panel glass" hidden aria-live="polite">
+      <div class="panel-head">
+        <h2 id="tool-title"></h2>
+        <span id="tool-badge" class="badge"></span>
+      </div>
+      <p id="tool-note" class="note"></p>
+      <div id="options" class="options"></div>
+      <button id="convert" class="btn primary big" type="button"><span class="spinner" aria-hidden="true"></span><span class="label">Convert</span></button>
+      <p id="status" class="status" role="status"></p>
+      <ul id="results" class="results"></ul>
+    </section>
+
+    <section class="foot glass">
+      <details id="unavailable" hidden>
+        <summary>Not available on this device</summary>
+        <ul id="unavailable-list"></ul>
+      </details>
+      <details>
+        <summary>What can't this app do?</summary>
+        <ul id="not-supported"></ul>
+      </details>
+      <button id="clear" class="link" type="button" hidden>Start over</button>
+    </section>
+  </main>
+
+  <script src="vendor/pdf-lib.min.js"></script>
+  <script src="vendor/pdf.min.js"></script>
+  <script src="vendor/xlsx.full.min.js"></script>
+  <script src="vendor/mammoth.browser.min.js"></script>
+  <script src="vendor/jszip.min.js"></script>
+  <script src="vendor/html2pdf.bundle.min.js"></script>
+  <script src="tools.js"></script>
+  <script src="browser-engine.js"></script>
+  <script src="photo-tool.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
